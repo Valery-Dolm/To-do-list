@@ -1,5 +1,4 @@
 
-
 let sort = document.querySelector('.container__inputSort');
 let move = document.querySelector('.container__movebuttone');
 let input = document.querySelector('.input');
@@ -37,8 +36,8 @@ items.forEach((input) => {
 });
 
 
-
 field.addEventListener(`dragenter`, (event) => {
+    event.target.style['border-bottom'] = 'solid 3px blueviolet';
     event.preventDefault();
   });
   field.addEventListener(`dragover`, (event) => {
@@ -47,10 +46,10 @@ field.addEventListener(`dragenter`, (event) => {
 
   field.addEventListener(`dragleave`, (event) => {
     event.target.style.backgroundColor = 'unset';
+    event.target.style['border-bottom'] = '';
 });
 
 field.addEventListener('drop',(event) => {
-    field.insertBefore(dragElem, event.target.lastChild);
+    event.target.style['border-bottom'] = '';
+    field.insertBefore(dragElem, event.target.parentElement);
 });
-
- 
