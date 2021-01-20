@@ -11,19 +11,36 @@
         <section class="container__block">
             <div class="container_yellowLine"></div>
             <h1>To-do list</h1>
-            <button type="button" class="container__inputSort">
-                <img class="grey" src="images/Group 34.png" alt="button to sort notes">
-                <img class="black" src="images/sortUpBlack.png" alt="button to sort notes">
-            </button>
-            <div class="container__inputField" draggable='true'> 
-                <div class="input">
-                    <button type="button" class="container__movebuttone">
-                        <img src="images/Group 36.png" alt="button to move notes">
-                    </button>                    
-                        <input class="text" type="text">                                       
-                    <button class="container_deleteNote">
-                        <img src="images/Group 56.png" alt="button to delete notes">
-                    </button>
+            <div class="container__inputSort">
+                <svg width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.5" width="2.5" height="12.5"/>
+                    <rect x="10" y="3.75" width="2.5" height="7.5" transform="rotate(-90 10 3.75)"/>
+                    <rect x="10" y="8.75" width="2.5" height="10" transform="rotate(-90 10 8.75)"/>
+                    <rect x="10" y="13.75" width="2.5" height="15" transform="rotate(-90 10 13.75)"/>
+                    <path d="M3.75 15L0.502405 10.3125L6.9976 10.3125L3.75 15Z"/>
+                </svg>
+            </div>
+            <div class="container__inputField"> 
+                <div class="input" draggable='true'>
+                    <div class="container__movebuttone">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2" cy="2" r="2" fill="#C4C4C4"/>
+                            <circle cx="2" cy="10" r="2" fill="#C4C4C4"/>
+                            <circle cx="10" cy="2" r="2" fill="#C4C4C4"/>
+                            <circle cx="10" cy="10" r="2" fill="#C4C4C4"/>
+                        </svg>
+                    </div> 
+                    <div>
+                        <input class="text" type="text">
+                    </div>             
+                        <div class="container__deleteNote">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="19" height="19" rx="9.5"/>
+                            <path d="M6 6L14 14" stroke="#C4C4C4"/>
+                            <path d="M6 14L14 6" stroke="#C4C4C4"/>
+                        </svg>                    
+                        </svg>                    
+                        </div>
                 </div>     
               </div>
             <div class="container__inputAdd">
