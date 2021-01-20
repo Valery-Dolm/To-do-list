@@ -6,6 +6,7 @@ let input = document.querySelector('.input');
 let remove = document.querySelector('.container__deleteNote');
 let addField = document.querySelector('.container__cross');
 let field = document.querySelector('.container__inputField');
+let dragElem;
 
 addField.addEventListener(('click'), () => {
     let newElem = input.cloneNode(true);
@@ -26,23 +27,30 @@ remove.addEventListener('click', () => {
 let items = document.querySelectorAll('.input');
 
 items.forEach((input) => {
-    field.addEventListener('dragstart', (event) => {
-        event.target.style.backgroundColor = 'red';
+    field.addEventListener('dragstart', (event) => {        
+        dragElem = event.target;
     });    
-    field.addEventListener('dragend', (event) => {
-        event.target.style.backgroundColor = 'unset';    
+    field.addEventListener('dragend', (event) => { 
+        event.target.style.backgroundColor = 'unset';
+        dragElem = null;   
     });
 });
 
 
 
-items.addEventListener(`dragenter`, (evt) => {
-    
-  })
-  
-  items.addEventListener(`dragleave`, (evt) => {
-    
+field.addEventListener(`dragenter`, (event) => {
+    event.preventDefault();
+  });
+  field.addEventListener(`dragover`, (event) => {
+    event.preventDefault();
   });
 
-  field.addEventListener(`dragover`, (evt) => {
-    evt.preventDefault();
+  field.addEventListener(`dragleave`, (event) => {
+    event.target.style.backgroundColor = 'unset';
+});
+
+field.addEventListener('drop',(event) => {
+    field.insertBefore(dragElem, event.target.lastChild);
+});
+
+ 
