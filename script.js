@@ -1,4 +1,3 @@
-
 let sort = document.querySelector('.container__inputSort');
 let move = document.querySelector('.container__movebuttone');
 let input = document.querySelector('.input');
@@ -16,16 +15,13 @@ addField.addEventListener(('click'), () => {
     xLogo.addEventListener(('click'), () => { 
         newElem.remove();
     })
-    draggable(newElem);
-});  
+}); 
+
 remove.addEventListener('click', () => {
     input.remove();
 });
-// function draggable(item) {
-//     item.children[0].addEventListener('mousedown', event => {
-//         item.draggable = true;
-//     })
-// }
+
+//Сортировка
 sort.addEventListener('click', () => {    
     let arrayInput = document.querySelectorAll('.input');
     let newArray = [...arrayInput];
@@ -69,6 +65,43 @@ sort.addEventListener('click', () => {
     field.innerHTML = '';
     field.append(...newArray);
 });
-    
-
-/*Drag&Drops определеяем перетаскиваемые элементы*/
+/*Drag&Drops*/
+field.addEventListener('dragstart', (event) => {
+    dragElem = event.target;
+    dragElem.style.backgroundColor = '#c3c3c3';
+    dragElem.children[1].style.backgroundColor = '#c3c3c3';
+    dragElem.children[1].style.color = '#FFFFFF';
+    dragElem.querySelector('.movebutton').style.fill = '#FFFFFF';
+    dragElem.querySelector('.deleteNoteButton').style.fill = '#c3c3c3';
+    dragElem.querySelector('.deleteNoteButton').style.stroke = '#FFFFFF';
+});
+field.addEventListener('dragend', (event) => {
+    dragElem.style.backgroundColor = 'unset';
+    dragElem.children[1].style.backgroundColor = 'unset';
+    dragElem.children[1].style.color = 'black';
+    dragElem.querySelector('.movebutton').style.fill = '#c3c3c3';
+    dragElem.querySelector('.deleteNoteButton').style.fill = '#FFFFFF';
+    dragElem.querySelector('.deleteNoteButton').style.stroke = '#c3c3c3';
+    dragElem = null;
+});
+field.addEventListener('dragenter', (event) => {
+    event.target.parentElement.style['border-bottom'] = 'solid 3px blueviolet';
+    event.preventDefault();
+});
+field.addEventListener('dragover', (event) => {
+    event.preventDefault();
+});
+field.addEventListener('dragleave', (event) => {
+    event.target.parentElement.style['border-bottom'] = '';
+});
+field.addEventListener('drop', (event) => {
+    console.log(event.target)
+    event.target.parentElement.style['border-bottom'] = '';
+    if(event.target.parentElement == input) {
+        field.insertBefore(dragElem, input);
+        dragElem.draggable = false; 
+    } else {
+        field.insertBefore(dragElem, event.target.parentElement);
+        dragElem.draggable = false;
+    }    
+});
