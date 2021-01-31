@@ -75,7 +75,6 @@ body {
 .input:hover {    
     background-color: #FFDC40;
     border-radius: 8px;
-    cursor:	move;
 }
 
 .container__movebuttone {
